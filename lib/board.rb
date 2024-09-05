@@ -1,5 +1,6 @@
 require 'colorize'
 require './lib/pieces/rook'
+require './lib/pieces/knight'
 
 class Board
     
@@ -21,26 +22,34 @@ class Board
         @board.each_with_index do |row,row_index|
             row.each_with_index do |col,col_index|
                 if is_even?(row_index,col_index)
-                    row[col_index]="   ".colorize(background: :light_white)
+                    row[col_index]="   ".colorize(background: @first_color)
                 else
-                    row[col_index]="   ".colorize(background: :green)
+                    row[col_index]="   ".colorize(background: @second_color)
                 end
             end
         end
     end
 
     def display_board
+        puts " a  b  c  d  e  f  g  h"
         @board.each_with_index do |row,row_index|
             row.each_with_index do |col,col_index|
                 print col
             end
             puts
         end
+        puts " a  b  c  d  e  f  g  h"
+
     end
 
     def add_rooks
         rook=Rook.new
         rook.add_rook(@board)
+    end
+    
+    def add_knights
+        knight=Knight.new
+        knight.add_knights(@board)
     end
 
 end

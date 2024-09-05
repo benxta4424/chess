@@ -5,8 +5,8 @@ class Rook
     POSITIONS=[0,7]
 
     def initialize
-        @white_rook="♖"
-        @black_rook="♜"
+        @white_rook=" \u2656 "
+        @black_rook=" \u265C "
     end
 
     def add_rook(board)
@@ -14,20 +14,17 @@ class Rook
             row.each_with_index do |col,col_index|
 
                 if row_index==0 && col_index==0
-                    color=is_even?(0,0) ? first_color : second_color
-                    row[col_index]=" ♜ ".colorize(background: color)
+                    row[col_index]=add_piece(@black_rook,row_index,col_index)
 
                 elsif row_index==0 && col_index==7
-                    color=is_even?(0,7) ? first_color : second_color
-                    row[col_index]=" ♜ ".colorize(background: color)
+                    row[col_index]=add_piece(@black_rook,row_index,col_index)
+
 
                 elsif row_index==7 && col_index==0
-                    color=is_even?(7,0) ? first_color : second_color
-                    row[col_index]=" ♖ ".colorize(background: color)
+                    row[col_index]=add_piece(@white_rook,row_index,col_index)
 
                 elsif row_index==7 && col_index==7
-                    color=is_even?(7,7) ? first_color : second_color
-                    row[col_index]=" ♖ ".colorize(background: color)
+                    row[col_index]=add_piece(@white_rook,row_index,col_index)
                 end
 
             end

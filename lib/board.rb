@@ -4,7 +4,7 @@ require './lib/pieces/rook'
 class Board
     
     def initialize
-        @board=Array.new(7){Array.new(7)}
+        @board=Array.new(8){Array.new(8)}
         @chess_board=[]
 
         @first_color=:light_white
@@ -20,7 +20,11 @@ class Board
     def create_board
         @board.each_with_index do |row,row_index|
             row.each_with_index do |col,col_index|
-                @board[row_index][col_index]=nil
+                if is_even?(row_index,col_index)
+                    row[col_index]="   ".colorize(background: :light_white)
+                else
+                    row[col_index]="   ".colorize(background: :green)
+                end
             end
         end
     end
@@ -28,21 +32,15 @@ class Board
     def display_board
         @board.each_with_index do |row,row_index|
             row.each_with_index do |col,col_index|
-                color=is_even?(row_index,col_index) ? @first_color : @second_color
-                display_color=col.nil? ? "  " : col.to_s
-                print display_color.colorize(background: color)
+                print col
             end
             puts
         end
     end
 
     def add_rooks
-        @board[0][0]=" ♖ ".colorize(background: :white)
-        @board[0][7]=" ♖ ".colorize(background: :white)
-
-        @board[7][0]=" ♜ ".colorize(background: :white)
-        @board[7][7]=" ♜ ".colorize(background: :white)
-
+        rook=Rook.new
+        rook.add_rook(@board)
     end
 
 end

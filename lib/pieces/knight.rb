@@ -12,7 +12,6 @@ class Knight
     end
 
     def add_knights(board)
-        position=0
         board.each_with_index do |row,row_index|
             row.each_with_index do |col,col_index|
                 if [row_index,col_index]==BOARD_POSIITONS[0]

@@ -1,6 +1,7 @@
 require 'colorize'
 require './lib/pieces/rook'
 require './lib/pieces/knight'
+require './lib/pieces/bishop'
 
 class Board
     
@@ -50,6 +51,11 @@ class Board
     def add_knights
         knight=Knight.new
         knight.add_knights(@board)
+    end
+
+    def add_bishops
+        bishop=Bishop.new
+        bishop.add_bishop(@board)
     end
 
 end

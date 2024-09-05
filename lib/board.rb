@@ -3,6 +3,7 @@ require './lib/pieces/rook'
 require './lib/pieces/knight'
 require './lib/pieces/bishop'
 require './lib/pieces/queen'
+require './lib/pieces/king'
 
 class Board
     
@@ -12,8 +13,6 @@ class Board
 
         @first_color=:light_white
         @second_color=:green
-        @white_king=" \u2654 "
-        @black_king=" \u265A "
     end
 
     def is_even?(index_one,index_two)
@@ -64,6 +63,11 @@ class Board
     def add_queens
         queen=Queen.new
         queen.add_queenies(@board)
+    end
+
+    def add_kings
+        kings=King.new
+        kings.add_kingies(@board)
     end
 
 end

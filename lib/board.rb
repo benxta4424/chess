@@ -4,6 +4,7 @@ require './lib/pieces/knight'
 require './lib/pieces/bishop'
 require './lib/pieces/queen'
 require './lib/pieces/king'
+require './lib/pieces/pawn'
 
 class Board
     
@@ -34,14 +35,14 @@ class Board
     end
 
     def display_board
-        puts " a  b  c  d  e  f  g  h"
+        puts " A  B  C  D  E  F  G  H"
         @board.each_with_index do |row,row_index|
             row.each_with_index do |col,col_index|
                 print col
             end
             puts
         end
-        puts " a  b  c  d  e  f  g  h"
+        puts " A  B  C  D  E  F  G  H"
 
     end
 
@@ -68,6 +69,11 @@ class Board
     def add_kings
         kings=King.new
         kings.add_kingies(@board)
+    end
+
+    def add_pawns
+        pawn=Pawn.new
+        pawn.add_pawnies(@board)
     end
 
 end
